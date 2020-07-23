@@ -251,10 +251,11 @@ class FileDownloadMessenger implements IFileDownloadMessenger {
         final BaseDownloadTask.IRunningTask task = mTask;
 
         if (task == null) {
-            throw new IllegalArgumentException(FileDownloadUtils.formatString(
-                    "can't handover the message, no master to receive this "
-                            + "message(status[%d]) size[%d]",
-                    currentStatus, parcelQueue.size()));
+            return;
+//            throw new IllegalArgumentException(FileDownloadUtils.formatString(
+//                    "can't handover the message, no master to receive this "
+//                            + "message(status[%d]) size[%d]",
+//                    currentStatus, parcelQueue.size()));
         }
 
         final BaseDownloadTask originTask = task.getOrigin();
