@@ -578,7 +578,11 @@ public class DownloadTask implements BaseDownloadTask, BaseDownloadTask.IRunning
         // In this case, we don't need to check, because, we just to rescue this task, it means this
         // task has already called start, but the filedownloader service didn't connected, and now,
         // the service is connected, so we just rescue this task.
-        startTaskUnchecked();
+        if (isUsing() && !isRunning()) {
+            reuse();
+        } else {
+            startTaskUnchecked();
+        }
     }
 
     @Override

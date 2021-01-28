@@ -103,6 +103,9 @@ class FileDownloadMessenger implements IFileDownloadMessenger {
 
     @Override
     public void notifyProgress(MessageSnapshot snapshot) {
+        if (mTask == null) {
+            return;
+        }
         final BaseDownloadTask originTask = mTask.getOrigin();
         if (FileDownloadLog.NEED_LOG) {
             FileDownloadLog.d(this, "notify progress %s %d %d",
